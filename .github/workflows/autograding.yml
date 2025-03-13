@@ -21,4 +21,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python eval.py >> report.md
-          cml-send-comment report.md
+          cml comment create report.md
