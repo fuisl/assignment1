@@ -11,6 +11,9 @@ permissions:
   actions: write
 jobs:
   run:
+    permissions:
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     container: ghcr.io/iterative/cml:0-dvc2-base1
     steps:
