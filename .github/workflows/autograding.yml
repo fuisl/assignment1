@@ -6,6 +6,9 @@ on:
   push:
     branches:
       solution
+permissions:
+  contents: write
+  actions: write
 jobs:
   run:
     runs-on: ubuntu-latest
