@@ -12,6 +12,14 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.8'
+  
+      - name: Cache Python Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Setup CML Report
         uses: iterative/setup-cml@v2
@@ -21,4 +29,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python eval.py >> report.md
-          cml comment create report.md
+          cml comment create report.md --repo https://github.com/fuisl/assignment1 --token $repo_token
